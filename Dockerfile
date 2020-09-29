@@ -17,5 +17,6 @@ COPY app ${path}/app
 
 ENV APP_PATH ${path}/app
 
+WORKDIR ${path}/app
 #CMD tail -f /dev/null
-["python /site/app/main.py"]
+CMD  python main.py
