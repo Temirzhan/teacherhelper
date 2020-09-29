@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block head %}
+ <style>
+ .ts div {
+ 		height: 45px;
+ 		display: flex;
+ 		justify-content: flex-start;
+ 		align-items: center;
+ 		border-bottom: 1px solid black;
+ 	}
+ 	.navbar div a {
+ 		color: #3C6682;
+ 		text-decoration:none;
+ 	}
+ 	@media (max-width: 1000.98px) { 
+
+ 		.container {
+ 			width: 100%;
+ 		}
+
+ 	 }
+ 	.ts {
+ 		border: 1px solid black;
+ 	}
+
+
+</style>
+
+{% endblock %}
+{% block body %}
+	<div class="container" style="margin-top: 80px; background-color:">
+
+		<hr>
+		<div class="row">
+			<!-- leff -->
+			<div class="col-3">
+				<div style="height: 150px;background-color: #A6A6A6;"></div>
+
+				<h5> Панель навигации: </h5>
+
+
+			<nav class="nav flex-column nav-pills">
+
+				<a class="nav-link act-menu" href="/module1">1. Образование</a>
+				<a class="nav-link act-menu" href="/module2">2. Образование</a>
+				<a class="nav-link act-menu" href="/module3">3. Образование</a>
+				<a class="nav-link act-menu" href="/module4">4. Образование</a>
+
+
+<!-- 			  <a class="nav-link" href="#">Обучение</a>
+			  <a class="nav-link active" href="#">Обучение</a>
+			  <a class="nav-link" href="#">Обучение</a>
+			  <a class="nav-link disabled" href="#">Обучение</a> -->
+			</nav>
+
+
+			</div>
+			
+			<!-- right -->
+			<div class="col-9">
+				{% block sub_body %}
+				
+					<div class="jumbotron">
+					  <h3 class="display-5">Приветствую Вас {{data['user']['name'].title()}}!!!</h3>
+					  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Veritatis quaerat reprehenderit quia suscipit qui sit laboriosam quidem odit iusto, id doloremque adipisci excepturi minima corporis necessitatibus ratione porro officiis sunt.</p>
+				{% endblock %}
+			</div>
+		
+		</div>
+
+	</div>
+
+{% endblock %}
+{% block script %}{% endblock %}
+

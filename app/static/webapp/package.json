@@ -1,0 +1,24 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack -d",
+    "watch": "webpack -d --watch",
+    "style": "sass --no-source-map base.scss:style.min.css",
+    "wstyle": "sass base.scss style.min.css --watch",
+    "style-min": "sass base.scss style.min.css --style compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "sass": "^1.26.11"
+  }
+}
