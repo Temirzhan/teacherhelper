@@ -2,12 +2,12 @@
 
 
 import { Hello } from "./module/helloworld.js";
-import { init_CustomStyle } from "./module/custom_style.js";
+import { init_custom_style } from "./module/custom_style.js";
+import { init_focus01 } from "./module/focus01.js";
 
-console.log("Main load1");
+console.log("Main load");
 
-// Hello.call();
-var custom_style = init_CustomStyle();
+
 var App = {
 	_main : function () {
 		// var custom_style = init_CustomStyle();
@@ -34,14 +34,25 @@ var App = {
 
 App.run();
 
+var custom_style = init_custom_style();
+// custom_style.footer_position();
 
 var path = window.location.pathname.split(/\//);
 path = path.slice(-1)[0];
+
+
 
 if (path.search(/module\d{1,2}/) != -1 )
 {
 	custom_style.active_menu( path );
 }
+
+if (path.search(/module1/) != -1 )
+{
+	let focus = init_focus01();
+	focus.main(); 
+}
+
 // if (path.length === 0 || path === "index.html")
 // {
 

@@ -7,6 +7,11 @@ import { Tools } from "../tools.js";
 
 class CustomStyle
 {
+	constructor()
+	{
+		this.Height = document.documentElement.clientHeight;
+		this.Width  = document.documentElement.clientWidth;
+	}
 
 	active_menu(path)
 	{
@@ -22,16 +27,25 @@ class CustomStyle
 		}
 	}
 
+	footer_position()
+	{
+		var footer = Tools.get_el(".footer-bottom"  );
+		var setting = footer.getBoundingClientRect()
+		footer.style.cssText = "position: fixed;left: 0;top:" + (this.Height - setting.height) + "px";
+		console.log(this.Height, this.Width, footer, setting );
+	}
+
+
 
 
 
 }
 
 
-function init_CustomStyle()
+function init_custom_style()
 {
 	return new CustomStyle();
 }
 
 
-export { init_CustomStyle };
+export { init_custom_style };

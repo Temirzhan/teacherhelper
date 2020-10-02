@@ -1,10 +1,188 @@
 {% extends "home.html" %}
+
+{% block style_module %}
+
+	 .desc-box {
+		height: 300px;
+		width: 100%;
+		background-color:  #DEDEDE
+	}
+
+
+.table td:first-of-type {
+   text-align: center; 
+
+}
+{% endblock %}
 {% block sub_body %}
 
 
-<h3>Заголовок module 1</h3>
+{% set detail1 = '<div><div style="height: auto; width: 100%; margin-bottom: 5px;"><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(194, 174, 58);">?</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(74, 140, 229);">С</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(65, 199, 63);">О</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(63, 191, 199);">П</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(63, 191, 199);">Г</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(163, 194, 196);">Н</div><div class="btn btn-sm" style="cursor: pointer; font-size: 15px; margin: auto 1px; padding: 0px 2px; color: white; background-color: rgb(218, 86, 86);">Т</div></div><textarea style="width: 140px; height: 100%;" name="text01" rows="1"></textarea>
+                        	</div>' %}
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Quisquam alias amet similique, possimus ab quo quia quasi magnam voluptatem, soluta praesentium exercitationem vitae aperiam voluptas aut corrupti architecto veniam? Vero?!!!!!!!!!!</p>
+{% set detail2 =  '<div style="padding: 5px 3px;width: 120px;"><input type="text" class="form-control" disabled></div>'  %}
+{% set detail3 =  '<div><textarea style=" resize: both;" name="text01" cols="10" rows="1"></textarea></div>'  %}
+
+<h3>Фокус наблюдения: эффективная организация групповой формы работы. Графический метод наблюдения.</h3>
+
+<p>Инструкция</p>
+
+<ol>
+	<li>Выберите группу для наблюдения. Запишите имена учеников, либо присвойте номер.</li>
+	<li>Предлогаем заполнять таблицу. Для этого обозначьте имя или номер ученика.</li>
+	<li>Каждый раз, когда учащиеся
+		<ul>
+			<li>отвечают на вопросы, задают вопросы ставьте знак "?"...</li>
+			<li>самостоятельно выполняют задание, ставьте букву "С"...</li>
+			<li>обсуждают, ставьте буквук "О"...</li>
+			<li>выполняют задание в парах, ставьте букву "П"...</li>
+			<li>выполняют задание с использованием групповой формы работы, ставьте букву "Г"...</li>
+			<li>ничего не делают, ставьте букву "Н"...</li>
+			<li>сидит в телефоне, ставьте букву "Т"...</li>
+		</ul>
+		в той клеточке с кем происходит взаимодействие.
+	</li>
+</ol>
+<hr>
+<div class="desc-box" style="display: flex; flex-direction: column;">
+	
+	<div class="c-row" style="width: 100%; flex-basis: 33.3%;  display: flex;">
+		<div style="flex-basis: 50%; width: 100%;height: 100%;  display: flex; flex-direction: column;justify-content:center; align-items: flex-end; padding: 5px 5px;">
+			<input type="text" class="form-control" name="name1" placeholder="имя" style="width: 50%;">
+		</div>
+		<div style="flex-basis: 50%; width: 100%;height: 100%; display: flex; flex-direction: column;justify-content:center; align-items: flex-start; padding: 5px 5px;">
+			<input type="text" class="form-control" name="name2" placeholder="имя" style="width: 50%;">
+		</div>
+	</div>
+	
+	<div class="c-row" style="width: 100%; flex-basis: 33.3%; display: flex;">
+		
+		<div style=" width: 100%;height: 100%; flex-basis: 25%; display: flex; flex-direction: column;justify-content:center; padding: 5px 5px;" >
+			<input type="text" class="form-control" name="name3" placeholder="имя" style="">
+		</div>
+		
+		<div style="flex-basis: 50%; padding: 0 20px;" >
+			
+			<div style=" width: 100%;height: 100%; background-color: #F1F0F0; border: 1px solid #5D5D5D"></div>
+
+		</div>
+		
+		<div style=" width: 100%;height: 100%; flex-basis: 25%; display: flex; flex-direction: column;justify-content:center; padding: 5px 5px;" >
+			<input type="text" class="form-control" name="name4" placeholder="имя" style="">
+		</div>
+
+	</div>
+	
+	<div class="c-row" style="width: 100%; flex-basis: 33.3%; display: flex;">
+
+		<div style="flex-basis: 50%; width: 100%;height: 100%; display: flex; flex-direction: column;justify-content:center; align-items: flex-end; padding: 5px 5px;">
+			<input type="text" class="form-control" name="name5" placeholder="имя" style="width: 50%;">
+		</div>
+		<div style="flex-basis: 50%; width: 100%;height: 100%; display: flex; flex-direction: column;justify-content:center; align-items: flex-start; padding: 5px 5px;">
+			<input type="text" class="form-control" name="name6" placeholder="имя" style="width: 50%;">
+		</div>	
+
+	</div>
+
+</div>
 
 
+
+<div class="cl-forms"></div>
+<hr>
+
+<!-- <div class="table-responsive"> -->
+<div class="table">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8 mt-4"><h3>Вовлеченность в процесс обучения</h3></div>
+                </div>
+            </div>
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td>25</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                        <td>{{detail1|safe}}</td>
+                    </tr> 
+                    <tr>
+                        <td>Слушатели</td>
+                        <td>{{detail2|safe}}</td>
+                        <td>{{detail2|safe}}</td>
+                        <td>{{detail2|safe}}</td>
+                        <td>{{detail2|safe}}</td>
+                        <td>{{detail2|safe}}</td>
+                        <td>{{detail2|safe}}</td>
+                    </tr>  
+                    <tr>
+                        <td>Комментарии</td>
+                        <td>{{detail3|safe}}</td>
+                        <td>{{detail3|safe}}</td>
+                        <td>{{detail3|safe}}</td>
+                        <td>{{detail3|safe}}</td>
+                        <td>{{detail3|safe}}</td>
+                        <td>{{detail3|safe}}</td>
+                    </tr> 
+                    <tr>
+                    	<td>Действия</td>
+                    	<td colspan="6">
+                    		<!-- <button type="button" class="btn btn-secondary btn-sm">Сохранить</button> -->
+                    		<button style="cursor: pointer;" type="button" class="btn btn-secondary btn-lg btn-block">Создать отчет</button>
+                    	</td>                    	
+<!--                     	<td colspan="3">
+                    		<button type="button" class="btn btn-secondary btn-sm">Сохранить</button>
+                    		<button style="cursor: pointer;" type="button" class="btn btn-secondary btn-lg btn-block">Очистить</button>
+                    	</td> -->
+                    </tr>
+                    <tr>
+                    	<td colspan="7">
+                    		Действие "создать отчет". Создание отчета(файла) и отправка на электронную почту.
+                    	</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>  
+<hr>
 {% endblock %}
