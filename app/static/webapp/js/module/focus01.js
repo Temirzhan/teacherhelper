@@ -177,7 +177,7 @@ class Focus01
 			}).then(canvas => {
 				console.log(canvas);
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, "group_work_report.png"); 
+                    saveAs(blob, "group_work_" + Tools.datetime_f1() + ".png"); 
                 });
 
 			})
