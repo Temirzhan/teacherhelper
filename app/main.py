@@ -1,20 +1,18 @@
-from flask import Flask, render_template, request, g, session, redirect, url_for
 import os
-from Globals import PATH
+from flask import Flask, render_template, request, g, session, redirect, url_for, jsonify
+from Globals import PATH, UPLOAD_FOLDER, SENDER_EMAIL, SMTP_SERVER, smtp_user, smtp_passwd
 from tools import log, load_users
-from waitress import serve
+from waitress  import serve
 from functools import wraps
+from werkzeug.utils  import secure_filename
+from attachSendEmail import send_email
+from Model import User
+
 log = log("main", "main.log")
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = os.urandom(24)
 app.logr = log
-
-# @app.route('/')
-# def index():
-#     if g.user:
-#         return render_template("index.html")
-#     else:
-#         return redirect( url_for( "auth" ) )
 
 
 def login_required(f):
@@ -56,12 +54,27 @@ def auth_():
         return redirect( url_for("auth") )
 
 
-@app.route('/module1')
+@app.route('/module1', methods=["GET"])
 @login_required
 def module1():
     data = {}
     data['user'] = g.user
     return render_template("module1.html", data = data)
+
+@app.route('/module1', methods=["POST"])
+@login_required
+def module1_post():
+    # {'email': '9keepa@gmail.com', 'id': '888888888', 'lvl': '0', 'name': 'андрей владимирович'}
+    file = request.files['file']
+    filename = secure_filename(file.filename)
+    absolute_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save( absolute_path )
+    send_email( SENDER_EMAIL, 
+        [SENDER_EMAIL, g.user['email']], g.User.email_subject("Групповая работа"), 
+        g.User.email_body(),
+        [absolute_path], SMTP_SERVER, smtp_user, smtp_passwd
+    )
+    return jsonify( result="Good" )
 
 
 @app.route('/module2')
@@ -82,9 +95,10 @@ def module3():
 
 @app.before_request
 def before_request():
-    g.user = None
+    g.user, g.User = None, None
     if 'user_id' in session:
         g.user = session['user_id']
+        g.User = User( g.user )
 
 
 @app.route('/logout', methods=["GET"])

@@ -1,5 +1,5 @@
 "use strict";
-
+import jquery  from 'jquery';
 
 function get_name_browser(){
     // получаем данные userAgent
@@ -61,12 +61,30 @@ function current_datetime_f1()
 }
 
 
+function send_file_ajax(file_name, data_blob, url)
+{
+
+    var fd = new FormData();
+    fd.append('file', data_blob, file_name);
+    jquery.ajax({
+        type: 'POST',
+        url: url,
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+           console.log(data);
+    });
+}
+
+
 var Tools = {
     datetime_f1: current_datetime_f1,
     get_el : get_el,
     get_els : get_els,
     getCoords : getCoords,
     get_name_browser : get_name_browser,
+    send_file_ajax : send_file_ajax,
 }
 
 

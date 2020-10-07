@@ -14,9 +14,10 @@ def load_users():
     for user in users:
         temp = {}
         spl = user.split(":")
-        temp['id']   = spl[0]
-        temp['name'] = spl[1]
-        temp['lvl']  = spl[2]
+        temp['id']     = spl[0]
+        temp['name']   = spl[1]
+        temp['lvl']    = spl[2]
+        temp['email']  = spl[3]
         usersD[spl[0]] = temp
     return usersD
 

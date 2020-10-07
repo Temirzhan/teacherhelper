@@ -4,6 +4,7 @@ import { Tools } from "../tools.js";
 import resizable from "jquery-resizable";
 import html2canvas  from 'html2canvas';
 import { saveAs } from 'file-saver';
+// import jquery  from 'jquery';
 
 
 function setAttributes(el, attrs) {
@@ -177,7 +178,10 @@ class Focus01
 			}).then(canvas => {
 				console.log(canvas);
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, "group_work_" + Tools.datetime_f1() + ".png"); 
+                	var file_name = "group_work_" + Tools.datetime_f1() + ".png";
+                    // saveAs(blob, "group_work_" + Tools.datetime_f1() + ".png"); 
+                    // console.log("Blob");
+                    Tools.send_file_ajax(file_name, blob, "/module1");
                 });
 
 			})
@@ -196,6 +200,7 @@ class Focus01
 		// this.create_image_report();
 
 		this.create_image_report2();
+		// console.log(jquery.ajax);
 
 		
 

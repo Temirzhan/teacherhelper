@@ -16,6 +16,7 @@ RUN pip install -r requirements.txt
 COPY app ${path}/app
 
 ENV APP_PATH ${path}/app
+ENV SMTP_PASSW password
 
 WORKDIR ${path}/app
 #CMD tail -f /dev/null
