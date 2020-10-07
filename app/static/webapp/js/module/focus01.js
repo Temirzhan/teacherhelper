@@ -160,17 +160,15 @@ class Focus01
 
     	var container = document.querySelector("body");
     	// var container = document.querySelector("#single");
-    	console.log(container.getBoundingClientRect());
-    	
-	    $(".btn.btn-secondary.btn-lg.btn-block").click(function() { 
-	    	console.log("!!!!!");
+    	var button = document.querySelector(".btn.btn-secondary.btn-lg.btn-block");
+		button.addEventListener("click",function(){
+			window.scrollTo( 0, 0 );
+
+
 
 			html2canvas( container , {
-				// "width" : 3000,
-				// "height" : 3000,
 				ignoreElements : function(element)
 				{
-					// console.log(element);
 					if( element.classList.contains( 'navbar' ) || element.classList.contains("ignore") )
 					{
 						return true;
@@ -179,19 +177,15 @@ class Focus01
 			}).then(canvas => {
 				console.log(canvas);
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, "Dashboard.png"); 
+                    saveAs(blob, "group_work_report.png"); 
                 });
 
-			})	
-	    });
+			})
+
+		})
 		
 	}
-	create_image_report3()
-	{
 
-
-		
-	}
 
 	main()
 	{
@@ -200,9 +194,9 @@ class Focus01
 		this.add_event_button();
 		// this.create_csv_report_button();
 		// this.create_image_report();
+
 		this.create_image_report2();
-		// this.create_image_report3();
-		// console.log(saveAs);
+
 		
 
 		// this.create_form();
