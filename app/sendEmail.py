@@ -17,7 +17,7 @@ def send_email():
         }
     headers = {
         'x-rapidapi-host': "rapidprod-sendgrid-v1.p.rapidapi.com",
-        'x-rapidapi-key': "1b8f7b50c5msh3ede31539304c22p1f5c5cjsn36bb69d0f73c",
+        'x-rapidapi-key': "",
         'content-type': "application/json",
         'accept': "application/json"
         }
