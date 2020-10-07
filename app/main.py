@@ -3,6 +3,7 @@ import os
 from Globals import PATH
 from tools import log, load_users
 from waitress import serve
+from functools import wraps
 log = log("main", "main.log")
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -15,14 +16,23 @@ app.logr = log
 #     else:
 #         return redirect( url_for( "auth" ) )
 
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            return redirect( url_for('auth') )
+        return f( *args, **kwargs )
+    return decorated_function
+
+
 @app.route('/')
+@login_required
 def home():
-    if g.user:
-        data = {}
-        data['user'] = g.user
-        return render_template("home.html", data = data)
-    else:
-        return redirect( url_for( "auth" ) )
+    data = {}
+    data['user'] = g.user
+    return render_template("home.html", data = data)
+
 
 @app.route("/auth", methods=["GET"])
 def auth():
@@ -32,6 +42,7 @@ def auth():
         data = {}
         data['user'] = None
         return render_template("login.html", data = data)
+
 
 @app.route("/auth", methods=["POST"])
 def auth_():
@@ -46,31 +57,28 @@ def auth_():
 
 
 @app.route('/module1')
+@login_required
 def module1():
-    if g.user:
-        data = {}
-        data['user'] = g.user
-        return render_template("module1.html", data = data)
-    else:
-        return redirect( url_for( "auth" ) )
+    data = {}
+    data['user'] = g.user
+    return render_template("module1.html", data = data)
+
 
 @app.route('/module2')
+@login_required
 def module2():
-    if g.user:
-        data = {}
-        data['user'] = g.user
-        return render_template("module2.html", data = data)
-    else:
-        return redirect( url_for( "auth" ) )
+    data = {}
+    data['user'] = g.user
+    return render_template("module2.html", data = data)
+
 
 @app.route('/module3')
+@login_required
 def module3():
-    if g.user:
-        data = {}
-        data['user'] = g.user
-        return render_template("module3.html", data = data)
-    else:
-        return redirect( url_for( "auth" ) )
+    data = {}
+    data['user'] = g.user
+    return render_template("module3.html", data = data)
+
 
 @app.before_request
 def before_request():
@@ -94,9 +102,11 @@ def error_404(error):
     # return render_template("404.html" ), 404
     return "Error Not Found 404", 404
 
-if __name__ == '__main__':
-
+def app_run():
     if os.getenv("APP_PATH", False):
         serve(app, host='0.0.0.0', port=5000)
     else:
         app.run(port=5000, host='0.0.0.0', debug=True)
+
+if __name__ == '__main__':
+    app_run()

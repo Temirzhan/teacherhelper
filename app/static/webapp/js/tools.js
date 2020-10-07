@@ -16,6 +16,7 @@ function get_name_browser(){
     // для популярных браузеров
     return 'Не определен';
 }
+
 function get_name_brand(){
     // получаем данные userAgent
     var bw = navigator.userAgent;    
@@ -45,9 +46,23 @@ function get_els(selector){
     return document.querySelectorAll(selector);
 }
 
+function current_datetime_f1()
+{
+
+    var currentdate = new Date();
+
+    var datetime = currentdate.getDate() + "-"+(currentdate.getMonth()+1) 
+        + "-" + currentdate.getFullYear() + "_" 
+        + currentdate.getHours() + "-" 
+        + currentdate.getMinutes() + "-" + currentdate.getSeconds();
+    return datetime;
+
+
+}
 
 
 var Tools = {
+    datetime_f1: current_datetime_f1,
     get_el : get_el,
     get_els : get_els,
     getCoords : getCoords,

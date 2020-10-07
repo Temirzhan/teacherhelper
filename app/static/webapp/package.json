@@ -19,6 +19,8 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "file-saver": "^2.0.2",
+    "html2canvas": "^1.0.0-rc.7",
     "sass": "^1.26.11"
   }
 }

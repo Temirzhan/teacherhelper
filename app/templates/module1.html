@@ -23,11 +23,11 @@
 {% set detail2 =  '<div style="padding: 5px 3px;width: 120px;"><input type="text" class="form-control" disabled></div>'  %}
 {% set detail3 =  '<div><textarea style=" resize: both;" name="text01" cols="10" rows="1"></textarea></div>'  %}
 
-<h3>Фокус наблюдения: эффективная организация групповой формы работы. Графический метод наблюдения.</h3>
+<h3 class="ignore">Фокус наблюдения: эффективная организация групповой формы работы. Графический метод наблюдения.</h3>
 
-<p>Инструкция</p>
+<p class="ignore">Инструкция</p>
 
-<ol>
+<ol class="ignore">
 	<li>Выберите группу для наблюдения. Запишите имена учеников, либо присвойте номер.</li>
 	<li>Предлогаем заполнять таблицу. Для этого обозначьте имя или номер ученика.</li>
 	<li>Каждый раз, когда учащиеся
@@ -44,6 +44,7 @@
 	</li>
 </ol>
 <hr>
+<div id="single">
 <div class="desc-box" style="display: flex; flex-direction: column;">
 	
 	<div class="c-row" style="width: 100%; flex-basis: 33.3%;  display: flex;">
@@ -164,7 +165,7 @@
                         <td>{{detail3|safe}}</td>
                         <td>{{detail3|safe}}</td>
                     </tr> 
-                    <tr>
+                    <tr class="ignore">
                     	<td>Действия</td>
                     	<td colspan="6">
                     		<!-- <button type="button" class="btn btn-secondary btn-sm">Сохранить</button> -->
@@ -175,7 +176,7 @@
                     		<button style="cursor: pointer;" type="button" class="btn btn-secondary btn-lg btn-block">Очистить</button>
                     	</td> -->
                     </tr>
-                    <tr>
+                    <tr class="ignore">
                     	<td colspan="7">
                     		Действие "создать отчет". Создание отчета(файла) и отправка на электронную почту.
                     	</td>
@@ -184,6 +185,8 @@
             </table>
         </div>
     </div>  
+
+</div>
 <hr>
 <h5 class="mt-5">Вопросы для обсуждения:</h5>
 <ol>
@@ -198,5 +201,6 @@
 </ol>
 <p>Запишите их для обсуждения после урока.</p>
 <hr>
+
 <div style="margin-top: 150px;"></div>
 {% endblock %}
