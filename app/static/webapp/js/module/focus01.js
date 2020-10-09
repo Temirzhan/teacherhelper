@@ -4,8 +4,9 @@ import { Tools } from "../tools.js";
 import resizable from "jquery-resizable";
 import html2canvas  from 'html2canvas';
 import { saveAs } from 'file-saver';
-// import jquery  from 'jquery';
 
+import jquery from 'jquery';
+import "../../node_modules/jquery-modal/jquery.modal";
 
 function setAttributes(el, attrs) {
   for(var key in attrs) {
@@ -163,6 +164,25 @@ class Focus01
     	// var container = document.querySelector("#single");
     	var button = document.querySelector(".btn.btn-secondary.btn-lg.btn-block");
 		button.addEventListener("click",function(){
+
+			var close_modal = '<br/> НАЖМИТЕ <a href="#" rel="modal:close">ГОТОВО</a>';
+			var modal_el = Tools.get_el("#ex1");
+
+        	function callback_close_modal(){
+			
+				jquery("#ex1").modal({
+					fadeDuration: 250,
+					escapeClose: false,
+					clickClose: false,
+					showClose: false
+				});
+
+
+        		modal_el.innerText = "Отчет сформирован и отправлен на почту";
+        		modal_el.innerHTML += close_modal;
+        	}
+
+
 			window.scrollTo( 0, 0 );
 
 
@@ -179,9 +199,10 @@ class Focus01
 				console.log(canvas);
                 canvas.toBlob(function(blob) {
                 	var file_name = "group_work_" + Tools.datetime_f1() + ".png";
+
                     // saveAs(blob, "group_work_" + Tools.datetime_f1() + ".png"); 
-                    // console.log("Blob");
-                    Tools.send_file_ajax(file_name, blob, "/module1");
+                   	callback_close_modal();
+                    Tools.send_file_ajax(file_name, blob, "/module1", function(){});
                 });
 
 			})
@@ -200,7 +221,7 @@ class Focus01
 		// this.create_image_report();
 
 		this.create_image_report2();
-		// console.log(jquery.ajax);
+
 
 		
 

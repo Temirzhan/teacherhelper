@@ -10,9 +10,9 @@ class User:
         self.email  = args['email']
 
     def email_subject(self, name):
-        string = "{} {}".format( name, self.id )
+        string = "Отчет {}".format( name, self.id )
         return string
 
     def email_body(self):
-        string = "From {}\nid {}".format(self.name, self.id)
+        string = "от: {}\nинн: {}\nпочта: {}".format(self.name, self.id, self.email )
         return string

@@ -2,11 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
-app/sendEmail.py
-sendEmail.py
+
 # C extensions
 *.so
 .idea
+temp.md
 info
 # Distribution / packaging
 .Python

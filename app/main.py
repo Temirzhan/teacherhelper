@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, g, session, redirect, url_for, jsonify
 from Globals import PATH, UPLOAD_FOLDER, SENDER_EMAIL, SMTP_SERVER, smtp_user, smtp_passwd
-from tools import log, load_users
+from tools import log, load_users, hash_
 from waitress  import serve
 from functools import wraps
 from werkzeug.utils  import secure_filename
@@ -67,7 +67,8 @@ def module1_post():
     # {'email': '9keepa@gmail.com', 'id': '888888888', 'lvl': '0', 'name': 'андрей владимирович'}
     file = request.files['file']
     filename = secure_filename(file.filename)
-    absolute_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    # import pdb;pdb.set_trace()
+    absolute_path = os.path.join(app.config['UPLOAD_FOLDER'], "_".join( [g.User.id, filename] ) )
     file.save( absolute_path )
     send_email( SENDER_EMAIL, 
         [SENDER_EMAIL, g.user['email']], g.User.email_subject("Групповая работа"), 

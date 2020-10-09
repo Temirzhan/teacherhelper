@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d",
     "watch": "webpack -d --watch",
-    "style": "sass --no-source-map base.scss:style.min.css",
-    "wstyle": "sass base.scss style.min.css --watch",
-    "style-min": "sass base.scss style.min.css --style compressed"
+    "style": "sass --no-source-map base.scss:../style/style.min.css",
+    "wstyle": "sass base.scss ../style/style.min.css --watch --style compressed",
+    "style-min": "sass base.scss ../style/style.min.css --style compressed"
   },
   "keywords": [],
   "author": "",

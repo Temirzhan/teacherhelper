@@ -61,7 +61,7 @@ function current_datetime_f1()
 }
 
 
-function send_file_ajax(file_name, data_blob, url)
+function send_file_ajax(file_name, data_blob, url, callback)
 {
 
     var fd = new FormData();
@@ -74,6 +74,7 @@ function send_file_ajax(file_name, data_blob, url)
         contentType: false
     }).done(function(data) {
            console.log(data);
+           callback();
     });
 }
 

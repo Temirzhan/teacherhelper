@@ -1,8 +1,8 @@
 import os
 
 PATH = os.getenv( "APP_PATH", os.getcwd() )
-SENDER_EMAIL  = "repente@yandex.ru"
+SENDER_EMAIL  = "repente1@yandex.ru"
 SMTP_SERVER   = "smtp.yandex.com"
-smtp_user     = "repente"
+smtp_user     = "repente1"
 smtp_passwd   = os.getenv( "SMTP_PASSW", "password" )
-UPLOAD_FOLDER = os.path.join(PATH, "data")
+UPLOAD_FOLDER = os.path.join(PATH, "data", "report_storage")
