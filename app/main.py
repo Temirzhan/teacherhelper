@@ -15,6 +15,14 @@ app.secret_key = os.urandom(24)
 app.logr = log
 
 
+@app.context_processor
+def utility_processor():
+    def component_format(string, value):
+        return string.format( value )
+
+    return dict(component_format=component_format,)
+
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -27,9 +35,7 @@ def login_required(f):
 @app.route('/')
 @login_required
 def home():
-    data = {}
-    data['user'] = g.user
-    return render_template("home.html", data = data)
+    return render_template("home.html", data = {"user":g.user})
 
 
 @app.route("/auth", methods=["GET"])
@@ -37,9 +43,7 @@ def auth():
     if g.user:
         return redirect( url_for( "home" ) )
     else:
-        data = {}
-        data['user'] = None
-        return render_template("login.html", data = data)
+        return render_template("login.html", data = {"user":None})
 
 
 @app.route("/auth", methods=["POST"])
@@ -57,21 +61,20 @@ def auth_():
 @app.route('/module1', methods=["GET"])
 @login_required
 def module1():
-    data = {}
-    data['user'] = g.user
-    return render_template("module1.html", data = data)
+    return render_template("module1.html", data = {"user":g.user})
 
 @app.route('/module1', methods=["POST"])
 @login_required
 def module1_post():
-    # {'email': '9keepa@gmail.com', 'id': '888888888', 'lvl': '0', 'name': 'андрей владимирович'}
+
     file = request.files['file']
     filename = secure_filename(file.filename)
-    # import pdb;pdb.set_trace()
-    absolute_path = os.path.join(app.config['UPLOAD_FOLDER'], "_".join( [g.User.id, filename] ) )
+    report_name = request.form['report_name']
+
+    absolute_path = os.path.join( app.config['UPLOAD_FOLDER'], "_".join( [g.User.id, filename] ) )
     file.save( absolute_path )
     send_email( SENDER_EMAIL, 
-        [SENDER_EMAIL, g.user['email']], g.User.email_subject("Групповая работа"), 
+        [SENDER_EMAIL, g.user['email']], g.User.email_subject( report_name ), 
         g.User.email_body(),
         [absolute_path], SMTP_SERVER, smtp_user, smtp_passwd
     )
@@ -81,17 +84,15 @@ def module1_post():
 @app.route('/module2')
 @login_required
 def module2():
-    data = {}
-    data['user'] = g.user
-    return render_template("module2.html", data = data)
+    return render_template("module2.html",data = {"user":g.user})
 
 
 @app.route('/module3')
 @login_required
 def module3():
-    data = {}
-    data['user'] = g.user
-    return render_template("module3.html", data = data)
+    return render_template("module3.html", data = {
+        "user":g.user,
+        })
 
 
 @app.before_request

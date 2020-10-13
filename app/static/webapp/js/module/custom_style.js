@@ -1,6 +1,8 @@
 "use strict";
 
-import { Tools } from "../tools.js";
+import { Tools }  from "../tools.js";
+import { print }  from "./helper.js";
+// import print  from "./helper.js";
 
 // get_el = Tools.get_el;
 

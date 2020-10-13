@@ -11,6 +11,7 @@ def load_users():
 
     users = data.split("\n")
     usersD = {}
+
     for user in users:
         temp = {}
         spl = user.split(":")

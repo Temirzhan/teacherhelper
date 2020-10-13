@@ -4,6 +4,7 @@
 import { Hello } from "./module/helloworld.js";
 import { init_custom_style } from "./module/custom_style.js";
 import { init_focus01 } from "./module/focus01.js";
+import { init_focus02 } from "./module/focus02.js";
 
 console.log("Main load");
 
@@ -50,6 +51,11 @@ if (path.search(/module\d{1,2}/) != -1 )
 if (path.search(/module1/) != -1 )
 {
 	let focus = init_focus01();
+	focus.main(); 
+}
+if (path.search(/module2/) != -1 )
+{
+	let focus = init_focus02();
 	focus.main(); 
 }
 

@@ -1,10 +1,158 @@
 {% extends "home.html" %}
+
+{% block style_module %}
+
+ .left-col {
+ 	padding:5px;
+	height: 650px;
+	width: 100%;
+	flex-basis: 70%;
+	<!-- background-color:  #979797; -->
+} 
+.right-col {
+	height: auto;
+	width: 100%;
+	flex-basis: 30%;
+}
+
+.t14 {
+	font-size: 12px;
+}
+.td-time {
+	width: 80px;
+}
+.row a.btn {
+	border: 1px solid #767373;
+}
+
+<style>
+	{
+		background-color: #D49F9F;
+		flex-basis: 70%;
+		width: 100%;
+		height: 400px;
+		font-size: 16px;
+		border: 1px solid #767373
+	}
+</style>
+
+
+{% endblock %}
+
+<!-- this component for table -->
+{% set table_row = '''
+				<td class="td-time">{0}</td>
+				<td><textarea></textarea></td>
+				<td class="td-time">{0}</td>
+				<td><textarea></textarea></td>
+'''.strip() %}
+
 {% block sub_body %}
 
 
-<h3>Заголовок module 2</h3>
+<div class="row">
+	<h3>Фокус наблюдения: деятельность ученика</h3>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Quisquam alias amet similique, possimus ab quo quia quasi magnam voluptatem, soluta praesentium exercitationem vitae aperiam voluptas aut corrupti architecto veniam? Vero?!!!!!!!!!!</p>
+	<p>Наблюдатель приходя в класс с целью отследить эффективность деятельности учащихся на уроке должен определиться за кем из учащихся будет вести наблюдение. Возможно это будет не один ученик. Для этого необходимо также определиться где должен сидеть второй ученик, рядом или может сидеть за другим столом? Если вы только учитесь наблюдать, то предлагаем вам определить одного ученика для наблюдения, а когда вы поймете, что ваш навык наблюдения достаточен для того чтобы наблюдать за двумя или тремя учениками, то вы можете выбирать несколько объектов для наблюдения. Возьмите с собой секундомер.</p>
+
+	<p class="font-weight-bold">Инструкция: </p>
+
+	<ol>
+		<li>Изучите лист для фиксирования результатов наблюдения.</li>
+		<li>Сконцентрируйте выше внимание на конкртеном ученике. Сядьте где-нибудь, где вы можете смотреть на него или на нее легко, не привлекая при этом внимания ученика</li>
+		<li>Отметьте на графике ниже, использую простую волнистую линию, степень концентрации ученика по мере продвижения урока. Для этого, например, каждые 5 минут необходимо отмечать, чем занят ученик. Возможно, вы захотите одновременно наблюдать за двумя учениками, рисуя две разные цветовые линии.</li>
+		<li>Для создания графика используются кнопки управления <span class="font-weight-bold">Ученик 1</span> и <span class="font-weight-bold">Ученик 2</span> расположенные рядом с графиком.</li>
+	</ol>
+</div>
+<div class="row">
+	<div class="left-col">
+
+		<canvas width="560" height="620" id="canvas"></canvas>
+
+	</div>
+	<div class="right-col mt-1">
+		<div style="background-color: #DEDEDE; padding: 2px 5px;">
+			<div class="t14 mb-2">
+				<a class="btn btn-secondary btn-sm mr-1 role1" role="button">Ученик 1</a> <span> ( красная линия ) - сплошная </span>
+			</div>
+			<div class="t14">
+				<a class="btn btn-secondary btn-sm mr-1 role2" role="button">Ученик 2</a> <span> ( синия линия ) - пунктиром </span>
+			</div>
+			<hr>
+			<div class="">
+				<a class="btn btn-secondary btn-sm btn-clear" role="button">Очистить график</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	<ol start="5">
+		<li>Попытайтесь объяснить поведение, которые вы видели, и дайте любое возможное объяснение уровню концентрации ученика на каждом участке времени. Комментарий записывайте в таблице.</li>
+	</ol>
+</div>
+
+<div class="row">
+	
+
+<div class="table">
+    <table class="table table-bordered">
+        <tbody>
+            <tr class="text-center">
+                <td colspan="2">Ученик 1 <br> Красная линия</td>
+                <td colspan="2">Ученик 2 <br> Синия линия</td>
+            </tr>
+            <tr class="text-center">
+                <td class="td-time">Время, мин</td>
+                <td>Комментарий</td>
+                <td class="td-time">Время, мин</td>
+                <td>Комментарий</td>
+            </tr>
+            <tr class="text-center"> {{ component_format(table_row, 5)  | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 10) | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 15) | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 20) | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 25) | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 35) | safe }} </tr>
+            <tr class="text-center"> {{ component_format(table_row, 40) | safe }} </tr>
+            <tr class="ignore">
+            	<td>Действия</td>
+            	<td colspan="4">
+            		<!-- <button type="button" class="btn btn-secondary btn-sm">Сохранить</button> -->
+            		<button style="cursor: pointer;" type="button" class="btn btn-secondary btn-lg btn-block">Создать отчет</button>
+            	</td>                    	
+            </tr>
+            <tr class="ignore text-center">
+            	<td colspan="4">
+            		Действие "создать отчет". Создание отчета(файла) и отправка на электронную почту.
+            	</td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+
+</div>
+
+
+
+<h5 class="mt-5">Вопросы для обсуждения:</h5>
+<ol>
+	<li>В какой степени учителю удалось вовлечь всех учеников в процесс обучения?</li>
+	<li>Где была зона действия учителя?</li>
+	<li>Какие приемы использовались учителем для побуждения отвечать на вопросы учащихся?</li>
+	<li>Был ли лидер/лидеры</li>
+	<li>Как размещение учащихся в группах повлияло на развитие динамики группы?</li>
+	<li>Что в деятельности учителя и учеников, помогало создать условия для эффективного обучения?</li>
+	<li>Какие аспекты урока препятствовали обучению?</li>
+	<li>Могут возникнуть вопросы, которые вы сами хотели бы спросить у учителя о различных решениях, принятых до и во время урока. </li>
+</ol>
+
+<div class="ignore" style="margin-top: 150px;"></div>
+
+<div class="modal" id="ex1">
+  <p></p>
+</div>
 
 
 {% endblock %}

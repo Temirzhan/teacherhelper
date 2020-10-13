@@ -61,11 +61,13 @@ function current_datetime_f1()
 }
 
 
-function send_file_ajax(file_name, data_blob, url, callback)
+function send_file_ajax(file_name, data_blob, url, report_name ,callback)
 {
 
     var fd = new FormData();
     fd.append('file', data_blob, file_name);
+    fd.append('report_name', report_name);
+
     jquery.ajax({
         type: 'POST',
         url: url,
