@@ -23,3 +23,8 @@
 **Обновление приложения.**
 
 1. перейти в корень проекта и выполнить команду `git pull && docker rm -f site_azamat && docker build -t site:latest . && docker run --name site_azamat -d -p 8110:5000 site:latest`
+
+
+**Добавление/удаление пользователя**
+
+Отредактировать файл в `./app/data/users.txt`.
