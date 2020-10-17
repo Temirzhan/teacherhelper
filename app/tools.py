@@ -9,6 +9,7 @@ def load_users():
     with open(absolute) as f:
         data = f.read()
 
+    data  = data.strip()
     users = data.split("\n")
     usersD = {}
 
